@@ -1,14 +1,64 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      FORMULARIO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="myForm">
+          <div>
+            <ion-item>
+              <ion-input formControlName="rfc" type="text" placeholder="RFC"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="myForm.controls.rfc.invalid && myForm.controls.rfc.dirty">
+              <p>*El RFC es obligatorio</p>
+            </ion-item>
+        
+            <ion-item>
+              <ion-input formControlName="nombre" type="text" placeholder="NOMBRE"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.controls.nombre.invalid && myForm.controls.nombre.dirty">
+                <p>*El NOMBRE es obligatorio</p>
+              </ion-item>
+         
+            <ion-item>
+              <ion-input formControlName="email"type="text" placeholder="EMAIL"></ion-input>
+            </ion-item>
+            
+            <ion-item *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">
+                <p>*El EMAIL es obligatorio</p>
+            </ion-item>
+           
+            <ion-item>
+              <ion-label>GENERO</ion-label>
+              <ion-select fromControlName="genero" placeholder="genero">
+                <ion-select-option value="f" selected>Femenino</ion-select-option>
+                <ion-select-option value="m">Masculino</ion-select-option>
+              </ion-select>
+            </ion-item>
+            
+            
+            <ion-item>
+              <ion-input  formControlName="curp" type="text" placeholder="CURP"></ion-input>
+            </ion-item>
+            
+            <ion-item *ngIf="myForm.controls.curp.invalid && myForm.controls.curp.dirty">
+                <p>*La CURP es obligatorio</p>
+              </ion-item>
+        
+          </div>
+          <div>
+              <ion-button type="button" [disabled]="myForm.invalid">Guardar</ion-button>
+           
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
